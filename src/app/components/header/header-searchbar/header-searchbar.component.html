@@ -1,8 +1,10 @@
 <div class="searchbarContainer">
   <form (ngSubmit)="onSearch()">
-    <label for="text"></label>
-    <input type="text" id="text" name="text"
-      [(ngModel)]="text"
+    <label for="searchQuery"></label>
+    <input
+      type="text"
+      id="searchQuery" name="searchQuery"
+      [(ngModel)]="searchQuery"
       placeholder="Search for Series"
     >
     <button type="submit">Search</button>

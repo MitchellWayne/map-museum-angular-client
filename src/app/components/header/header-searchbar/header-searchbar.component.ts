@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-searchbar.component.scss']
 })
 export class HeaderSearchbarComponent implements OnInit {
-  text!: string;
+  searchQuery!: string;
 
   constructor() { }
 
@@ -14,7 +14,6 @@ export class HeaderSearchbarComponent implements OnInit {
   }
 
   onSearch() {
-    
+    console.log(this.searchQuery);
   }
-
 }
