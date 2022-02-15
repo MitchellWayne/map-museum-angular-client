@@ -1,0 +1,33 @@
+@use '/src/defaults' as d;
+
+.searchbarContainer {
+  background-color: d.$white;
+  height: 1.5em;
+  border-radius: 1em;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 100%;
+
+    input {
+      margin: 0 1em;
+
+      // font-family: map-get(d.$fonts, "gideon");
+          
+      background-color: transparent;
+      border: none;
+    }
+  
+    button {
+      margin: 0 1em 0 0;
+
+      height: 100%;
+
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
