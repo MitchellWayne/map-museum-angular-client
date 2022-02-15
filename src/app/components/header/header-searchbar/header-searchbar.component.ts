@@ -11,7 +11,7 @@ export class HeaderSearchbarComponent implements OnInit {
   faSearchIcon = faSearch;
   faClearIcon = faTimes;
 
-  showClearBtn: boolean = true;
+  showClearBtn: boolean = false;
 
   constructor() { }
 
@@ -20,5 +20,17 @@ export class HeaderSearchbarComponent implements OnInit {
 
   onSearch() {
     console.log(this.searchQuery);
+  }
+
+  onClear() {
+    this.searchQuery = "";
+    this.showClearBtn = false;
+  }
+
+  onInputChange() {
+    console.log('changing bool!');
+    if (this.searchQuery) {
+      this.showClearBtn = true;
+    }
   }
 }
