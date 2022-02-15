@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-searchbar',
@@ -9,6 +9,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export class HeaderSearchbarComponent implements OnInit {
   searchQuery!: string;
   faSearchIcon = faSearch;
+  faClearIcon = faTimes;
+
+  showClearBtn: boolean = true;
 
   constructor() { }
 
