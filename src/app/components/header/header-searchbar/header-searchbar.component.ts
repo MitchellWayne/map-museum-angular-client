@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-searchbar.component.scss']
 })
 export class HeaderSearchbarComponent implements OnInit {
+  text!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSearch() {
+    
   }
 
 }

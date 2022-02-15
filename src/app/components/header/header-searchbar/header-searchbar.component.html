@@ -1,1 +1,10 @@
-<p>header-searchbar works!</p>
+<div class="searchbarContainer">
+  <form (ngSubmit)="onSearch()">
+    <label for="text"></label>
+    <input type="text" id="text" name="text"
+      [(ngModel)]="text"
+      placeholder="Search for Series"
+    >
+    <button type="submit">Search</button>
+  </form>
+</div>
