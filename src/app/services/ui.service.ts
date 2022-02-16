@@ -7,15 +7,30 @@ import { Observable, Subject } from 'rxjs';
 export class UiService {
   private searchActive: boolean = false;
   private searchActiveSubject = new Subject<any>();
+  private searchQuery: string = '';
+  private searchQuerySubject = new Subject<any>();
 
   constructor() { }
 
   toggleSearchActive(): void {
-    this.searchActive = !this.searchActive;
-    this.searchActiveSubject.next(this.searchActive);
+    try {
+      this.searchActive = !this.searchActive;
+      this.searchActiveSubject.next(this.searchActive);
+    } catch(err) {
+      this.searchActiveSubject.error(err);
+    }
   }
 
-  onToggle(): Observable<any> {
+  onSearchActive(): Observable<any> {
     return this.searchActiveSubject.asObservable();
+  }
+
+  updateSearchQuery(query: string): void {
+    this.searchQuery = query;
+    this.searchQuerySubject.next(this.searchQuery);
+  }
+
+  onUpdateSearchQuery(): Observable<any> {
+    return this.searchQuerySubject.asObservable();
   }
 }
