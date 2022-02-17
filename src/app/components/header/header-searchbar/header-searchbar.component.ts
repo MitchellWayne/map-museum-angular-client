@@ -10,7 +10,7 @@ import { faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderSearchbarComponent implements OnInit {
   @Input() searchActive!: boolean;
-  @Input() searchQuery!: string;
+  searchQuery: string = "";
 
   @Output() onInputChange: EventEmitter<string> = new EventEmitter();
   
