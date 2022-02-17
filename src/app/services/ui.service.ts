@@ -11,6 +11,9 @@ export class UiService {
   private searchQuery: string = '';
   private searchQuerySubject = new Subject<any>();
 
+  private infoboxActive: boolean = false;
+  private infoboxActiveSubject = new Subject<any>();
+
   private activeNote: any;
   private activeNoteSubject = new Subject<any>();
 
@@ -40,6 +43,19 @@ export class UiService {
 
   onUpdateSearchQuery(): Observable<any> {
     return this.searchQuerySubject.asObservable();
+  }
+
+  setInfoboxActive(state: boolean): void {
+    try {
+      this.infoboxActive = state;
+      this.infoboxActiveSubject.next(this.infoboxActive);
+    } catch(err) {
+      this.infoboxActiveSubject.error(err);
+    }
+  }
+
+  onInfoboxActive(): Observable<any> {
+    return this.infoboxActiveSubject.asObservable();
   }
 
   setActiveNote(note: any) {
