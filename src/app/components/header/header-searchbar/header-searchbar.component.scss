@@ -2,11 +2,11 @@
 
 .searchbarContainer {
   height: 1.75em;
-  width: 17.5em;
 
   background-color: d.$white;
   border-radius: .25em;
-  box-shadow: 0 3px 0 d.$black;
+  box-shadow: .15em 0 0 d.$black;
+
 
   form {
     display: flex;

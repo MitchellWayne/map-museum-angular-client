@@ -1,3 +1,5 @@
+@use '/src/defaults' as d;
+
 .headerContainer {
   display: flex;
   flex-direction: row;
@@ -9,14 +11,21 @@
   &__mainInterface {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     overflow: hidden;
     height: 96vh;
+    width: 20em;
+
+    app-header-searchbar {
+      margin: 0;
+      width: 95%;
+    }
 
     app-header-infobox {
-      width: 98%;
-      height: 90vh;
+      margin: 1vh 0 0 0;
+      width: 95%;
+      height: 100%;
     }
   }
 }
