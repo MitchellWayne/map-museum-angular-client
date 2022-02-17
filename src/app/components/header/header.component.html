@@ -1,8 +1,11 @@
 <div class="headerContainer">
-  <app-header-searchbar
-    (onInputChange)="updateSearch($event)"
-    [searchActive]="searchActive"
-  >
-  </app-header-searchbar>
+  <div class="headerContainer__mainInterface">
+    <app-header-searchbar
+      (onInputChange)="updateSearch($event)"
+      [searchActive]="searchActive"
+    >
+    </app-header-searchbar>
+    <app-header-infobox></app-header-infobox>
+  </div>
   <app-header-logo></app-header-logo>
 </div>

@@ -3,5 +3,11 @@
   flex-direction: row;
   justify-content: space-between;
 
-  padding: 1em;
+  padding: 2vh;
+  height: 100vh;
+
+  &__mainInterface {
+    overflow: hidden;
+    height: 96vh;
+  }
 }
