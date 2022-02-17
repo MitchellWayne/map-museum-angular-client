@@ -6,7 +6,7 @@
       id="searchQuery" name="searchQuery"
       [(ngModel)]="searchQuery"
       placeholder="Search for Series"
-      (change)="onChange()"
+      (ngModelChange)="onChange()"
     >
     <div class="searchbarContainer-btns">
       <button class="searchBtn" type="submit">
