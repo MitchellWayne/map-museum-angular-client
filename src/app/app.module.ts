@@ -8,6 +8,7 @@ import { MapComponent } from './components/map/map.component';
 import { HeaderSearchbarComponent } from './components/header/header-searchbar/header-searchbar.component';
 import { HeaderLogoComponent } from './components/header/header-logo/header-logo.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HeaderInfoboxComponent } from './components/header/header-infobox/header-infobox.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     MapComponent,
     HeaderSearchbarComponent,
-    HeaderLogoComponent
+    HeaderLogoComponent,
+    HeaderInfoboxComponent
   ],
   imports: [
     BrowserModule,
