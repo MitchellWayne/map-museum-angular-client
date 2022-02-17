@@ -7,8 +7,12 @@ import { Observable, Subject } from 'rxjs';
 export class UiService {
   private searchActive: boolean = false;
   private searchActiveSubject = new Subject<any>();
+
   private searchQuery: string = '';
   private searchQuerySubject = new Subject<any>();
+
+  private activePin: any;
+  private activePinSubject = new Subject<any>();
 
   constructor() { }
 
@@ -26,11 +30,28 @@ export class UiService {
   }
 
   updateSearchQuery(query: string): void {
-    this.searchQuery = query;
-    this.searchQuerySubject.next(this.searchQuery);
+    try {
+      this.searchQuery = query;
+      this.searchQuerySubject.next(this.searchQuery);
+    } catch(err) {
+      this.searchQuerySubject.error(err);
+    }
   }
 
   onUpdateSearchQuery(): Observable<any> {
     return this.searchQuerySubject.asObservable();
+  }
+
+  setActivePin(pin: any) {
+    try {
+      this.activePin = pin;
+      this.activePinSubject.next(this.activePin);
+    } catch(err) {
+      this.activePinSubject.error(err);
+    }
+  }
+
+  onUpdateActivePin(): Observable<any> {
+    return this.activePinSubject.asObservable();
   }
 }
