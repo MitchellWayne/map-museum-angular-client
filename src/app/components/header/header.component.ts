@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
       }
     );
 
-    // This might not necessarily be needed here, just in the dropdown component
     this.searchQuerySubscription = this.uiService.onUpdateSearchQuery().subscribe(
       value => {
         this.searchQuery = value;
@@ -32,13 +31,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleSearchActive() {
-    this.uiService.toggleSearchActive();
-  }
-
-  // This might not necessarily be needed here, just in the searchbar component
-  updateSearchQuery(updatedQuery: string) {
+  updateSearch(updatedQuery: string) {
     this.uiService.updateSearchQuery(updatedQuery);
+    this.uiService.setSearchActive(this.searchQuery !== "");
+    console.log(this.searchActive + ":" + this.searchQuery);
   }
-
 }

@@ -12,9 +12,9 @@ export class UiService {
 
   constructor() { }
 
-  toggleSearchActive(): void {
+  setSearchActive(state: boolean): void {
     try {
-      this.searchActive = !this.searchActive;
+      this.searchActive = state;
       this.searchActiveSubject.next(this.searchActive);
     } catch(err) {
       this.searchActiveSubject.error(err);

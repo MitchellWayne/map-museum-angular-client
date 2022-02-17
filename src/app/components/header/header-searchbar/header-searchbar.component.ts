@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 import { faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,13 +9,16 @@ import { faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header-searchbar.component.scss']
 })
 export class HeaderSearchbarComponent implements OnInit {
-  searchQuery!: string;
+  @Input() searchActive!: boolean;
+  @Input() searchQuery!: string;
+
+  @Output() onInputChange: EventEmitter<string> = new EventEmitter();
+  
   faSearchIcon = faSearch;
   faClearIcon = faTimes;
 
-  showClearBtn: boolean = false;
-
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
@@ -23,14 +28,10 @@ export class HeaderSearchbarComponent implements OnInit {
   }
 
   onClear() {
-    this.searchQuery = "";
-    this.showClearBtn = false;
+    this.onInputChange.emit('');
   }
 
-  onInputChange() {
-    console.log('changing bool!');
-    if (this.searchQuery) {
-      this.showClearBtn = true;
-    }
+  onChange() {
+    this.onInputChange.emit(this.searchQuery);
   }
 }

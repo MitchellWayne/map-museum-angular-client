@@ -6,13 +6,13 @@
       id="searchQuery" name="searchQuery"
       [(ngModel)]="searchQuery"
       placeholder="Search for Series"
-      (change)="onInputChange()"
+      (change)="onChange()"
     >
     <div class="searchbarContainer-btns">
       <button class="searchBtn" type="submit">
         <fa-icon [icon]="faSearchIcon" ></fa-icon>
       </button>
-      <div *ngIf="showClearBtn" class="clearBtnWrapper">
+      <div *ngIf="searchActive" class="clearBtnWrapper">
         <button class="clearBtn" (click)="onClear()">
           <fa-icon [icon]="faClearIcon" ></fa-icon>
         </button>
