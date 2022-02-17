@@ -8,11 +8,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  searchActive!: boolean;
+  searchActive: boolean = false;
   searchActiveSubscription!: Subscription;
 
   searchQuery!: string;
   searchQuerySubscription!: Subscription;
+
+  infoboxActive: boolean = false;
+  infoboxActiveSubscription!: Subscription;
 
   constructor(private uiService: UiService) { 
     this.searchActiveSubscription = this.uiService.onSearchActive().subscribe(
@@ -26,6 +29,12 @@ export class HeaderComponent implements OnInit {
         this.searchQuery = value;
       }
     );
+
+    this.infoboxActiveSubscription = this.uiService.onInfoboxActive().subscribe(
+      value => {
+        this.infoboxActive = value;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -34,6 +43,7 @@ export class HeaderComponent implements OnInit {
   updateSearch(updatedQuery: string) {
     this.uiService.updateSearchQuery(updatedQuery);
     this.uiService.setSearchActive(this.searchQuery !== "");
+    this.uiService.setInfoboxActive(this.searchQuery !== "");
     console.log(this.searchActive + ":" + this.searchQuery);
   }
 }

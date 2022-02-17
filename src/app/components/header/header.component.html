@@ -3,9 +3,10 @@
     <app-header-searchbar
       (onInputChange)="updateSearch($event)"
       [searchActive]="searchActive"
-    >
-    </app-header-searchbar>
-    <app-header-infobox></app-header-infobox>
+    ></app-header-searchbar>
+    <app-header-infobox
+      [infoboxActive]="infoboxActive"
+    ></app-header-infobox>
   </div>
   <app-header-logo></app-header-logo>
 </div>
