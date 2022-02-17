@@ -7,7 +7,16 @@
   height: 100vh;
 
   &__mainInterface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     overflow: hidden;
     height: 96vh;
+
+    app-header-infobox {
+      width: 98%;
+      height: 90vh;
+    }
   }
 }
