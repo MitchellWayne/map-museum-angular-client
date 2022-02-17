@@ -11,8 +11,8 @@ export class UiService {
   private searchQuery: string = '';
   private searchQuerySubject = new Subject<any>();
 
-  private activePin: any;
-  private activePinSubject = new Subject<any>();
+  private activeNote: any;
+  private activeNoteSubject = new Subject<any>();
 
   constructor() { }
 
@@ -42,16 +42,16 @@ export class UiService {
     return this.searchQuerySubject.asObservable();
   }
 
-  setActivePin(pin: any) {
+  setActiveNote(note: any) {
     try {
-      this.activePin = pin;
-      this.activePinSubject.next(this.activePin);
+      this.activeNote = note;
+      this.activeNoteSubject.next(this.activeNote);
     } catch(err) {
-      this.activePinSubject.error(err);
+      this.activeNoteSubject.error(err);
     }
   }
 
-  onUpdateActivePin(): Observable<any> {
-    return this.activePinSubject.asObservable();
+  onUpdateActiveNote(): Observable<any> {
+    return this.activeNoteSubject.asObservable();
   }
 }
