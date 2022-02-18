@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   searchActive: boolean = false;
   searchActiveSubscription!: Subscription;
 
-  searchQuery!: string;
+  searchQuery: string = "";
   searchQuerySubscription!: Subscription;
 
   infoboxActive: boolean = false;
@@ -63,8 +63,13 @@ export class HeaderComponent implements OnInit {
   }
 
   executeSearch() {
-    this.uiService.setInfoboxActive(this.searchQuery !== "");
-    this.uiService.getSeriesList();
+    if (this.searchQuery !== ""){
+      this.uiService.setInfoboxActive(true);
+      this.uiService.getSeriesList();
+    } else {
+      this.uiService.setInfoboxActive(false);
+    }
+    
     setTimeout(() => {console.log(this.seriesList)}, 1000);
   }
 }
