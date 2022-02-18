@@ -1,1 +1,11 @@
-<p>seriesitem works!</p>
+<div class="seriesitem">
+  <div class="seriesitem__pic">
+    <fa-icon
+      [icon]="faQuestion">
+    </fa-icon>
+  </div>
+  <div class="seriesitem__info">
+    <h3>{{ series.name }}</h3>
+    <p>{{ series.notes.length }} notes</p>
+  </div>
+</div>
