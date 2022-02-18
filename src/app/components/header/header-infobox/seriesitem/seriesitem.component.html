@@ -1,8 +1,14 @@
 <div class="seriesitem">
   <div class="seriesitem__pic">
     <fa-icon
+      *ngIf="seriesImgSrc === ''"
       [icon]="faQuestion">
     </fa-icon>
+    <img 
+      *ngIf="seriesImgSrc !== ''"
+      src="{{ seriesImgSrc }}"
+      alt="Image depicting series of {{ series.name }}"
+    >
   </div>
   <div class="seriesitem__info">
     <h3>{{ series.name }}</h3>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SeriesService } from 'src/app/services/series.service';
 import { Series } from 'src/app/interfaces/Series';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,11 +10,15 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 })
 export class SeriesitemComponent implements OnInit {
   @Input() series!: Series;
+  seriesImgSrc: string = "";
   faQuestion = faQuestion;
 
-  constructor() { }
+  constructor( private seriesService: SeriesService) { }
 
   ngOnInit(): void {
+    if (this.series.image) {
+      this.seriesImgSrc = this.seriesService.getSeriesImage(this.series);
+    }
   }
 
 }
