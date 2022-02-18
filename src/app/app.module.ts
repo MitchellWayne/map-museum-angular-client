@@ -10,6 +10,8 @@ import { HeaderSearchbarComponent } from './components/header/header-searchbar/h
 import { HeaderLogoComponent } from './components/header/header-logo/header-logo.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderInfoboxComponent } from './components/header/header-infobox/header-infobox.component';
+import { SerieslistComponent } from './components/header/header-infobox/serieslist/serieslist.component';
+import { SeriesitemComponent } from './components/header/header-infobox/seriesitem/seriesitem.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HeaderInfoboxComponent } from './components/header/header-infobox/heade
     MapComponent,
     HeaderSearchbarComponent,
     HeaderLogoComponent,
-    HeaderInfoboxComponent
+    HeaderInfoboxComponent,
+    SerieslistComponent,
+    SeriesitemComponent
   ],
   imports: [
     BrowserModule,
