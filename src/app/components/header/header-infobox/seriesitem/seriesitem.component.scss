@@ -1,0 +1,47 @@
+@use '/src/defaults' as d;
+
+.seriesitem {
+  display: flex;
+  flex-direction: row;
+  margin: .5em;
+  height: 3em;
+  
+  background-color: d.$black;
+  box-shadow: .1em .1em 0 #00000050;
+
+  &__pic {
+    aspect-ratio: 1/1;
+    height: 3em;
+
+    background-color: d.$black;
+    border-right: .1em solid #00000050;
+
+    fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: 2em;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5%;
+    width: 80%;
+
+    font-family: map-get(d.$fonts, "gideon");
+
+    h3 {
+      width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
