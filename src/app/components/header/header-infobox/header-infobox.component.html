@@ -1,1 +1,7 @@
-<div *ngIf="infoboxActive" class="infoboxContainer">Test</div>
+<div *ngIf="infoboxActive" class="infoboxContainer">
+  <app-serieslist
+    *ngIf="seriesList.length > 0"
+  >
+    Series Found!
+  </app-serieslist>
+</div>
