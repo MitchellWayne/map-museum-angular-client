@@ -1,7 +1,12 @@
 <div *ngIf="infoboxActive" class="infoboxContainer">
-  <app-serieslist
+  <app-serieslist 
     *ngIf="seriesList.length > 0"
+    [seriesList]="seriesList"
   >
-    Series Found!
   </app-serieslist>
+  <!--
+    Will have another component for noteDetailed
+    Logic may require emptying seriesList when
+    noteDetailed data is populated
+  -->
 </div>

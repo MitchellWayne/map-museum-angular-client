@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Series } from 'src/app/interfaces/Series';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-seriesitem',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seriesitem.component.scss']
 })
 export class SeriesitemComponent implements OnInit {
+  @Input() series!: Series;
+  faQuestion = faQuestion;
 
   constructor() { }
 
