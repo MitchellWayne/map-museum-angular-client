@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { SeriesService } from './series.service';
+import { Series } from '../interfaces/Series';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,13 @@ export class UiService {
   private infoboxActive: boolean = false;
   private infoboxActiveSubject = new Subject<any>();
 
+  private seriesList: Series[] = [];
+  private seriesListSubject = new Subject<any>();
+
   private activeNote: any;
   private activeNoteSubject = new Subject<any>();
 
-  constructor() { }
+  constructor(private seriesService: SeriesService) {}
 
   setSearchActive(state: boolean): void {
     try {
@@ -56,6 +61,18 @@ export class UiService {
 
   onInfoboxActive(): Observable<any> {
     return this.infoboxActiveSubject.asObservable();
+  }
+
+  getSeriesList(): void {
+    this.seriesService.getSeriesList(this.searchQuery).subscribe(
+      (value) =>  {
+        this.seriesList = value;
+        this.seriesListSubject.next(this.seriesList);
+      });
+  }
+
+  onSeriesListUpdate(): Observable<Series[]> {
+    return this.seriesListSubject.asObservable();
   }
 
   setActiveNote(note: any) {
