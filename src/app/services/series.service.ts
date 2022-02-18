@@ -20,4 +20,8 @@ export class SeriesService {
   getSeriesList(query: string): Observable<Series[]> {
     return this.http.get<Series[]>(`${this.apiUrl}/?seriesfilter=${query}`);
   }
+
+  getSeriesImage(series: Series): string {
+    return `${this.apiUrl}/${series._id}/image/${series.image}`;
+  }
 }
