@@ -18,6 +18,6 @@ export class SeriesService {
   constructor(private http: HttpClient) { }
 
   getSeriesList(query: string): Observable<Series[]> {
-    return this.http.get<Series[]>(`${this.apiUrl}/series/?seriesfilter=${query}`);
+    return this.http.get<Series[]>(`${this.apiUrl}/?seriesfilter=${query}`);
   }
 }

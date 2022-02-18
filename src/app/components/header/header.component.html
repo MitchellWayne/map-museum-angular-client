@@ -2,6 +2,7 @@
   <div class="headerContainer__mainInterface">
     <app-header-searchbar
       (onInputChange)="updateSearch($event)"
+      (onExecuteSearch)="executeSearch()"
       [searchActive]="searchActive"
     ></app-header-searchbar>
     <app-header-infobox

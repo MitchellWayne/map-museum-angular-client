@@ -13,6 +13,7 @@ export class HeaderSearchbarComponent implements OnInit {
   searchQuery: string = "";
 
   @Output() onInputChange: EventEmitter<string> = new EventEmitter();
+  @Output() onExecuteSearch: EventEmitter<any> = new EventEmitter();
   
   faSearchIcon = faSearch;
   faClearIcon = faTimes;
@@ -24,7 +25,7 @@ export class HeaderSearchbarComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.searchQuery);
+    this.onExecuteSearch.emit();
   }
 
   onClear() {

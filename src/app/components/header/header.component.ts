@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from 'src/app/services/ui.service';
-import { Subscription } from 'rxjs';
+import { SeriesService } from 'src/app/services/series.service';
+import { Subscription, timeout } from 'rxjs';
+import { Series } from 'src/app/interfaces/Series';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  series: Series[] = [];
+
   searchActive: boolean = false;
   searchActiveSubscription!: Subscription;
 
@@ -17,7 +21,7 @@ export class HeaderComponent implements OnInit {
   infoboxActive: boolean = false;
   infoboxActiveSubscription!: Subscription;
 
-  constructor(private uiService: UiService) { 
+  constructor(private uiService: UiService, private seriesService: SeriesService) { 
     this.searchActiveSubscription = this.uiService.onSearchActive().subscribe(
       value => { 
         this.searchActive = value;
@@ -43,7 +47,15 @@ export class HeaderComponent implements OnInit {
   updateSearch(updatedQuery: string) {
     this.uiService.updateSearchQuery(updatedQuery);
     this.uiService.setSearchActive(this.searchQuery !== "");
-    this.uiService.setInfoboxActive(this.searchQuery !== "");
+    if (this.searchQuery === "") this.uiService.setInfoboxActive(false);
+
     console.log(this.searchActive + ":" + this.searchQuery);
+  }
+
+  executeSearch() {
+    this.uiService.setInfoboxActive(this.searchQuery !== "");
+    this.seriesService.getSeriesList(this.searchQuery).subscribe((seriesList) => this.series = seriesList);
+    
+    setTimeout(() => {console.log(this.series)}, 2000);
   }
 }
