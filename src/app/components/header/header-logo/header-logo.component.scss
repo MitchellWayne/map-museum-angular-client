@@ -1,0 +1,7 @@
+@use '/src/defaults' as d;
+
+h1 {
+  font-family: map-get(d.$fonts, "gideon");
+  font-size: 1.5em;
+  text-shadow: .05em .05em 0em d.$black;
+}

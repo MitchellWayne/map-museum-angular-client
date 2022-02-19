@@ -8,6 +8,8 @@
   padding: 2vh;
   height: 100vh;
 
+  z-index: 1;
+
   &__mainInterface {
     display: flex;
     flex-direction: column;
@@ -16,6 +18,8 @@
     overflow: hidden;
     height: 96vh;
     width: 20em;
+
+    z-index: 1;
 
     app-header-searchbar {
       margin: 0;
@@ -28,5 +32,9 @@
       width: 95%;
       height: 100%;
     }
+  }
+
+  app-header-logo {
+    z-index: 1;
   }
 }
