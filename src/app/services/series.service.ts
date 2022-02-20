@@ -24,4 +24,8 @@ export class SeriesService {
   getSeriesImage(series: Series): string {
     return `${this.apiUrl}/${series._id}/image/${series.image}`;
   }
+
+  getSeriesMainImage(series: Series): string {
+    return `${this.apiUrl}/${series._id}/image/${series.mainImage}`;
+  }
 }

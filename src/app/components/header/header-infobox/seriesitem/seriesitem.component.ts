@@ -11,6 +11,7 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 export class SeriesitemComponent implements OnInit {
   @Input() series!: Series;
   seriesImgSrc: string = "";
+  seriesMainImgSrc: string= "";
   faQuestion = faQuestion;
 
   constructor( private seriesService: SeriesService) { }
@@ -18,6 +19,10 @@ export class SeriesitemComponent implements OnInit {
   ngOnInit(): void {
     if (this.series.image) {
       this.seriesImgSrc = this.seriesService.getSeriesImage(this.series);
+    }
+
+    if (this.series.mainImage) {
+      this.seriesMainImgSrc = this.seriesService.getSeriesMainImage(this.series);
     }
   }
 

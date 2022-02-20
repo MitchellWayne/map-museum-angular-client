@@ -3,4 +3,5 @@ export interface Series {
   name: string;
   notes: string[];
   image: string;
+  mainImage: string;
 }
