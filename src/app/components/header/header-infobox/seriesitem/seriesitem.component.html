@@ -1,4 +1,4 @@
-<div class="seriesitem">
+<div class="seriesitem" (click)="setActiveSeries()">
   <div class="seriesitem__pic">
     <fa-icon
       *ngIf="seriesImgSrc === ''"
@@ -11,7 +11,7 @@
     >
   </div>
   <div class="seriesitem__info">
-    <button (click)="setActiveSeries()">{{ series.name }}</button>
+    <h3>{{ series.name }}</h3>
     <p>{{ series.notes.length }} notes</p>
   </div>
 </div>

@@ -6,8 +6,14 @@
   margin: .5em;
   height: 3em;
   
+  color: d.$white;
   background-color: d.$black;
   box-shadow: .1em .1em 0 #00000050;
+
+  &:hover {
+    border-right: .25em solid d.$white;
+    color: d.$white-hover;
+  }
 
   &__pic {
     aspect-ratio: 1/1;
@@ -40,15 +46,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     margin: 0 5%;
     width: 80%;
 
     font-family: map-get(d.$fonts, "gideon");
 
-    button {
+    h3 {
       width: 90%;
 
-      color: d.$white;
+      // color: d.$white;
       background-color: transparent;
       border: none;
 
