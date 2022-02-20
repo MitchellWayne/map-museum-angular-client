@@ -108,6 +108,8 @@ export class UiService {
 
   clearActives(): void {
     this.activeNote = null;
+    this.activeNoteSubject.next(this.activeNote);
     this.activeSeries = null;
+    this.activeSeriesSubject.next(this.activeSeries);
   }
 }

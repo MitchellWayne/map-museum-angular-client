@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit {
   updateSearch(updatedQuery: string) {
     this.uiService.updateSearchQuery(updatedQuery);
     this.uiService.setSearchActive(this.searchQuery !== "");
+    this.uiService.clearActives();
     if (this.searchQuery === "") this.uiService.setInfoboxActive(false);
 
     console.log(this.searchActive + ":" + this.searchQuery);
