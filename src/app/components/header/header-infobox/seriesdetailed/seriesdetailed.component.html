@@ -1,1 +1,17 @@
-<p>seriesdetailed works!</p>
+<div class="seriesdetailed">
+  <div class="seriesdetailed__pic">
+    <fa-icon
+      *ngIf="seriesImgSrc === ''"
+      [icon]="faQuestion">
+    </fa-icon>
+    <img 
+      *ngIf="seriesImgSrc !== ''"
+      src="{{ seriesImgSrc }}"
+      alt="Image depicting series of {{ series.name }}"
+    >
+  </div>
+  <div class="seriesdetailed__info">
+    <h3>{{ series.name }}</h3>
+    <p>{{ series.notes.length }} notes</p>
+  </div>
+</div>
