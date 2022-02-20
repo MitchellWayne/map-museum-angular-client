@@ -24,6 +24,7 @@ export class MapComponent implements OnInit {
         zoom: 8,
         fullscreenControl: false,
         mapTypeControl: false,
+        streetViewControl: false,
       });
     })
     .catch(err => {
