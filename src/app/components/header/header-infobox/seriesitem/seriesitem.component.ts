@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SeriesService } from 'src/app/services/series.service';
 import { Series } from 'src/app/interfaces/Series';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-seriesitem',
@@ -11,19 +12,23 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 export class SeriesitemComponent implements OnInit {
   @Input() series!: Series;
   seriesImgSrc: string = "";
-  seriesMainImgSrc: string= "";
+  // seriesMainImgSrc: string= "";
   faQuestion = faQuestion;
 
-  constructor( private seriesService: SeriesService) { }
+  constructor( private seriesService: SeriesService, private uiService: UiService) { }
 
   ngOnInit(): void {
     if (this.series.image) {
       this.seriesImgSrc = this.seriesService.getSeriesImage(this.series);
     }
+    // if (this.series.mainImage) {
+    //   this.seriesMainImgSrc = this.seriesService.getSeriesMainImage(this.series);
+    // }
+  }
 
-    if (this.series.mainImage) {
-      this.seriesMainImgSrc = this.seriesService.getSeriesMainImage(this.series);
-    }
+  setActiveSeries() {
+    console.log(this.series);
+    this.uiService.setActiveSeries(this.series);
   }
 
 }

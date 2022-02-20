@@ -45,11 +45,18 @@
 
     font-family: map-get(d.$fonts, "gideon");
 
-    h3 {
+    button {
       width: 90%;
+
+      color: d.$white;
+      background-color: transparent;
+      border: none;
+
       overflow: hidden;
       white-space: nowrap;
+      text-align: start;
       text-overflow: ellipsis;
+      font-family: map-get(d.$fonts, "gideon");
     }
   }
 }

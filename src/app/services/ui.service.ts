@@ -19,7 +19,10 @@ export class UiService {
   private seriesList: Series[] = [];
   private seriesListSubject = new Subject<any>();
 
-  private activeNote: any;
+  private activeSeries: any = null;
+  private activeSeriesSubject = new Subject<any>();
+
+  private activeNote: any = null;
   private activeNoteSubject = new Subject<any>();
 
   constructor(private seriesService: SeriesService) {}
@@ -75,8 +78,9 @@ export class UiService {
     return this.seriesListSubject.asObservable();
   }
 
-  setActiveNote(note: any) {
+  setActiveNote(note: any): void {
     try {
+      this.activeSeries = null;
       this.activeNote = note;
       this.activeNoteSubject.next(this.activeNote);
     } catch(err) {
@@ -86,5 +90,24 @@ export class UiService {
 
   onUpdateActiveNote(): Observable<any> {
     return this.activeNoteSubject.asObservable();
+  }
+
+  setActiveSeries(series: Series): void {
+    try {
+      this.activeNote = null;
+      this.activeSeries = series;
+      this.activeSeriesSubject.next(this.activeSeries);
+    } catch(err) {
+      this.activeSeriesSubject.error(err);
+    }
+  }
+
+  onUpdateActiveSeries(): Observable<any> {
+    return this.activeSeriesSubject.asObservable();
+  }
+
+  clearActives(): void {
+    this.activeNote = null;
+    this.activeSeries = null;
   }
 }
