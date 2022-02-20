@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderInfoboxComponent } from './components/header/header-infobox/header-infobox.component';
 import { SerieslistComponent } from './components/header/header-infobox/serieslist/serieslist.component';
 import { SeriesitemComponent } from './components/header/header-infobox/seriesitem/seriesitem.component';
+import { SeriesdetailedComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SeriesitemComponent } from './components/header/header-infobox/seriesit
     HeaderLogoComponent,
     HeaderInfoboxComponent,
     SerieslistComponent,
-    SeriesitemComponent
+    SeriesitemComponent,
+    SeriesdetailedComponent
   ],
   imports: [
     BrowserModule,
