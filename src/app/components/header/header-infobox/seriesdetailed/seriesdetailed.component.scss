@@ -97,5 +97,9 @@
     background-color: d.$infobox;
 
     font-family: map-get(d.$fonts, "gideon");
+
+    ul {
+      width: 100%;
+    }
   }
 }

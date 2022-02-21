@@ -1,0 +1,18 @@
+.noteitem {
+  // width: 100%;
+  padding: .25em;
+  margin: .5em .25em;
+  background-color: #00000052;
+
+  p {
+    font-size: .75em;
+  }
+
+  &__latlong {
+    margin: 0 0 0 10%;
+  }
+
+  &:hover {
+    border-right: .5em solid white;
+  }
+}
