@@ -3,6 +3,7 @@ import { Series } from 'src/app/interfaces/Series';
 import { faQuestion, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { SeriesService } from 'src/app/services/series.service';
 import { UiService } from 'src/app/services/ui.service';
+import { Note } from 'src/app/interfaces/Note';
 
 @Component({
   selector: 'app-seriesdetailed',
@@ -11,6 +12,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class SeriesdetailedComponent implements OnInit {
   @Input() series!: Series;
+  notes: Note[] = [];
   seriesImgSrc: string = "";
 
   faQuestion = faQuestion;
