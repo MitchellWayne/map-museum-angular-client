@@ -59,8 +59,6 @@ export class HeaderComponent implements OnInit {
     this.uiService.setSearchActive(this.searchQuery !== "");
     this.uiService.clearActives();
     if (this.searchQuery === "") this.uiService.setInfoboxActive(false);
-
-    console.log(this.searchActive + ":" + this.searchQuery);
   }
 
   executeSearch() {
@@ -70,7 +68,5 @@ export class HeaderComponent implements OnInit {
     } else {
       this.uiService.setInfoboxActive(false);
     }
-    
-    setTimeout(() => {console.log(this.seriesList)}, 1000);
-  }
+      }
 }
