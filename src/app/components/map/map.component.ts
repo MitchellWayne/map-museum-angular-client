@@ -20,8 +20,8 @@ export class MapComponent implements OnInit {
     this.loader.load()
     .then((google) => {
       new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
+        center: { lat: 45.9795412, lng: -51.6052898 },
+        zoom: 2,
         fullscreenControl: false,
         mapTypeControl: false,
         streetViewControl: false,
