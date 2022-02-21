@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 100%;
 
   &__pic {
     aspect-ratio: 8/5;
@@ -74,5 +75,27 @@
       text-overflow: ellipsis;
       font-family: map-get(d.$fonts, "gideon");
     }
+
+    p {
+      margin-top: .5em;
+      font-size: .75em;
+    }
+  }
+
+  &__notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 2.5% 0 0 0;
+    padding: 2.5%;
+    height: 100%;
+    width: 100%;
+
+    overflow: scroll;
+
+    background-color: d.$infobox;
+
+    font-family: map-get(d.$fonts, "gideon");
   }
 }
