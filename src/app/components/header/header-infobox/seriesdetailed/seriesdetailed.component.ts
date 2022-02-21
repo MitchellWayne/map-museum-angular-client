@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Series } from 'src/app/interfaces/Series';
-import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { SeriesService } from 'src/app/services/series.service';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-seriesdetailed',
@@ -13,13 +14,18 @@ export class SeriesdetailedComponent implements OnInit {
   seriesImgSrc: string = "";
 
   faQuestion = faQuestion;
+  faArrowLeft = faArrowLeft;
 
-  constructor( private seriesService: SeriesService ) { }
+  constructor( private seriesService: SeriesService, private uiService: UiService ) { }
 
   ngOnInit(): void {
     if (this.series.mainImage) {
       this.seriesImgSrc = this.seriesService.getSeriesMainImage(this.series);
     }
+  }
+
+  exitActiveSeries() {
+    this.uiService.clearActives();
   }
 
 }

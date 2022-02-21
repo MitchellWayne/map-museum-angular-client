@@ -1,5 +1,22 @@
 @use '/src/defaults' as d;
 
+.goback {
+  position: absolute;
+  margin: .25em;
+
+  color: d.$white;
+  font-size: 1.5em;
+
+  &:hover {
+    // color: d.$white-hover;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
 .seriesdetailed {
   display: flex;
   flex-direction: column;
