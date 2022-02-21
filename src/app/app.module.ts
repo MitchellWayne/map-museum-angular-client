@@ -13,6 +13,7 @@ import { HeaderInfoboxComponent } from './components/header/header-infobox/heade
 import { SerieslistComponent } from './components/header/header-infobox/serieslist/serieslist.component';
 import { SeriesitemComponent } from './components/header/header-infobox/seriesitem/seriesitem.component';
 import { SeriesdetailedComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed.component';
+import { SeriesdetailedNoteitemComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed-noteitem/seriesdetailed-noteitem.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SeriesdetailedComponent } from './components/header/header-infobox/seri
     HeaderInfoboxComponent,
     SerieslistComponent,
     SeriesitemComponent,
-    SeriesdetailedComponent
+    SeriesdetailedComponent,
+    SeriesdetailedNoteitemComponent
   ],
   imports: [
     BrowserModule,
