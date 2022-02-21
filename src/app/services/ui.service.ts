@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { SeriesService } from './series.service';
+import { NoteService } from './note.service';
 import { Series } from '../interfaces/Series';
+import { Note } from '../interfaces/Note';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +21,16 @@ export class UiService {
   private seriesList: Series[] = [];
   private seriesListSubject = new Subject<any>();
 
+  private noteList: Note[] = [];
+  private noteListSubject = new Subject<any>();
+
   private activeSeries: any = null;
   private activeSeriesSubject = new Subject<any>();
 
   private activeNote: any = null;
   private activeNoteSubject = new Subject<any>();
 
-  constructor(private seriesService: SeriesService) {}
+  constructor(private seriesService: SeriesService, private noteService: NoteService) {}
 
   setSearchActive(state: boolean): void {
     try {
@@ -78,18 +83,24 @@ export class UiService {
     return this.seriesListSubject.asObservable();
   }
 
-  setActiveNote(note: any): void {
-    try {
-      this.activeSeries = null;
-      this.activeNote = note;
-      this.activeNoteSubject.next(this.activeNote);
-    } catch(err) {
-      this.activeNoteSubject.error(err);
-    }
+  getNoteList(queryID: string): void {
+    this.noteService.getNoteList(queryID).subscribe(
+      (value) => {
+        this.noteList = value;
+        this.noteListSubject.next(this.noteList);
+      });
   }
 
-  onUpdateActiveNote(): Observable<any> {
-    return this.activeNoteSubject.asObservable();
+  getNoteListDetailed(queryID: string): void {
+    this.noteService.getNoteListDetailed(queryID).subscribe(
+      (value) => {
+        this.noteList = value;
+        this.noteListSubject.next(this.noteList);
+      });
+  }
+
+  onNoteListUpdate(): Observable<Note[]> {
+    return this.noteListSubject.asObservable();
   }
 
   setActiveSeries(series: Series): void {
@@ -104,6 +115,20 @@ export class UiService {
 
   onUpdateActiveSeries(): Observable<any> {
     return this.activeSeriesSubject.asObservable();
+  }
+
+  setActiveNote(note: any): void {
+    try {
+      this.activeSeries = null;
+      this.activeNote = note;
+      this.activeNoteSubject.next(this.activeNote);
+    } catch(err) {
+      this.activeNoteSubject.error(err);
+    }
+  }
+
+  onUpdateActiveNote(): Observable<any> {
+    return this.activeNoteSubject.asObservable();
   }
 
   clearActives(): void {

@@ -27,7 +27,6 @@ export class SeriesitemComponent implements OnInit {
   }
 
   setActiveSeries() {
-    console.log(this.series);
     this.uiService.setActiveSeries(this.series);
   }
 
