@@ -10,9 +10,9 @@
     [series]="activeSeries"
   >
   </app-seriesdetailed>
-  <!--
-    Will have another component for noteDetailed
-    Logic may require emptying seriesList when
-    noteDetailed data is populated
-  -->
+  <app-notedetailed
+  >
+    *ngIf="activeNote && !activeSeries"
+    [note]="activeNote"
+  </app-notedetailed>
 </div>

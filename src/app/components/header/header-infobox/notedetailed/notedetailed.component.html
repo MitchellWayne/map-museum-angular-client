@@ -1,1 +1,24 @@
-<p>notedetailed works!</p>
+<fa-icon
+    class="goback"
+    [icon]="faArrowLeft"
+    (click)="exitActiveNote()"
+  > 
+</fa-icon>
+<div class="notedetailed">
+  <div class="notedetailed__pic">
+    <fa-icon
+      *ngIf="noteImgSrc === ''"
+      [icon]="faQuestion">
+    </fa-icon>
+    <img 
+      *ngIf="noteImgSrc !== ''"
+      src="{{ noteImgSrc }}"
+      alt="Detailed image depiction of note with title: {{ note.title }}"
+    >
+  </div>
+  <div class="notedetailed__loc"></div>
+  <div class="notedetailed__info">
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.synopsis }}</p>
+  </div>
+</div>
