@@ -25,6 +25,7 @@
 
   &__pic {
     aspect-ratio: 8/5;
+    height: 85%;
     width: 100%;
 
     background-color: d.$black;
@@ -70,7 +71,7 @@
       border: none;
 
       overflow: hidden;
-      white-space: nowrap;
+      // white-space: nowrap;
       text-align: start;
       text-overflow: ellipsis;
       font-family: map-get(d.$fonts, "gideon");
