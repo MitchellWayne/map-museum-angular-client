@@ -14,6 +14,7 @@ import { SerieslistComponent } from './components/header/header-infobox/seriesli
 import { SeriesitemComponent } from './components/header/header-infobox/seriesitem/seriesitem.component';
 import { SeriesdetailedComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed.component';
 import { SeriesdetailedNoteitemComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed-noteitem/seriesdetailed-noteitem.component';
+import { NotedetailedComponent } from './components/header/header-infobox/notedetailed/notedetailed.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SeriesdetailedNoteitemComponent } from './components/header/header-info
     SerieslistComponent,
     SeriesitemComponent,
     SeriesdetailedComponent,
-    SeriesdetailedNoteitemComponent
+    SeriesdetailedNoteitemComponent,
+    NotedetailedComponent
   ],
   imports: [
     BrowserModule,
