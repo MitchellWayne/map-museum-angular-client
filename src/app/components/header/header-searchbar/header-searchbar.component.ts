@@ -18,7 +18,7 @@ export class HeaderSearchbarComponent implements OnInit {
   faSearchIcon = faSearch;
   faClearIcon = faTimes;
 
-  constructor() { 
+  constructor(private uiService: UiService) { 
   }
 
   ngOnInit(): void {
@@ -31,6 +31,7 @@ export class HeaderSearchbarComponent implements OnInit {
   onClear() {
     this.onInputChange.emit('');
     this.searchQuery = '';
+    this.uiService.getNoteList('');
   }
 
   onChange() {

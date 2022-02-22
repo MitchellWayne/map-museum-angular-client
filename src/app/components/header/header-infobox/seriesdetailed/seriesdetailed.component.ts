@@ -32,7 +32,6 @@ export class SeriesdetailedComponent implements OnInit {
       (value) => {
         this.notes = value;
         console.log(value);
-        console.log(this.notes);
       });
   }
 
@@ -46,6 +45,7 @@ export class SeriesdetailedComponent implements OnInit {
 
   exitActiveSeries() {
     this.uiService.clearActives();
+    this.uiService.getNoteList('');
   }
 
 }
