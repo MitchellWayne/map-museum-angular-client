@@ -25,6 +25,7 @@ export class MapComponent implements OnInit {
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
+        this.reloadNotes();
       }
     );
   }
@@ -41,6 +42,8 @@ export class MapComponent implements OnInit {
         mapTypeControl: false,
         streetViewControl: false,
       });
+
+      this.uiService.getNoteList('');
     })
     .catch(err => {
       console.log(err);
@@ -49,6 +52,7 @@ export class MapComponent implements OnInit {
 
   reloadNotes() {
     this.activeNotes.forEach((note: Note) => {
+      console.log(note);
       const latlng = note.latlong.split(',')
       const marker = new this.google.maps.Marker({
         position: {lat: parseInt(latlng[0]), lng: parseInt(latlng[1])},
@@ -63,7 +67,9 @@ export class MapComponent implements OnInit {
 
       marker.addListener('click', () => {
         console.log(marker);
-        infowindow.open(this.map, marker)
+        infowindow.open(this.map, marker);
+        this.uiService.setActiveNote(marker);
+        this.uiService.setInfoboxActive(true);
       })
     });
   }
