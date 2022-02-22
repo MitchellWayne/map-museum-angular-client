@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { Subscription } from 'rxjs';
+import { Note } from 'src/app/interfaces/Note';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-map',
@@ -7,6 +10,9 @@ import { Loader } from '@googlemaps/js-api-loader';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  activeNotes: Note[] = [];
+  noteSubscription: Subscription;
+
   map!: google.maps.Map;
   google!: typeof google;
 
@@ -15,7 +21,13 @@ export class MapComponent implements OnInit {
     version: "weekly"
   });
 
-  constructor() { }
+  constructor(private uiService: UiService) {
+    this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
+      value => {
+        this.activeNotes = value;  
+      }
+    );
+  }
 
   ngOnInit(): void {
     // Load map at default coordinates
@@ -29,30 +41,30 @@ export class MapComponent implements OnInit {
         mapTypeControl: false,
         streetViewControl: false,
       });
-
-      // Infowindow tests
-      let infowindow = new google.maps.InfoWindow();
-      let popuphtml = "<div>TEST POPUP <div>INNER TEST</div></div>";
-      infowindow.setContent(popuphtml);
-
-       // Test markers
-      const marker = new google.maps.Marker({
-        position: {lat: 1, lng: 1},
-        map: this.map,
-        title: "Test marker",
-      });
-
-      marker.addListener('click', () => {
-        console.log(marker);
-        console.log(google);
-        console.log(this.google);
-        infowindow.open(this.map, marker);
-      });
-
     })
     .catch(err => {
       console.log(err);
     })
   }
 
+  reloadNotes() {
+    this.activeNotes.forEach((note: Note) => {
+      const latlng = note.latlong.split(',')
+      const marker = new this.google.maps.Marker({
+        position: {lat: parseInt(latlng[0]), lng: parseInt(latlng[1])},
+        map: this.map,
+        title: note.title,
+      });
+
+       // Infowindow tests
+       let infowindow = new google.maps.InfoWindow();
+       let popuphtml = `<div>${note.title} <div>${note.location}</div></div>`;
+       infowindow.setContent(popuphtml);
+
+      marker.addListener('click', () => {
+        console.log(marker);
+        infowindow.open(this.map, marker)
+      })
+    });
+  }
 }
