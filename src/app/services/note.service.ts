@@ -26,4 +26,8 @@ export class NoteService {
     return this.http.get<Note>(`${this.apiUrl}/${id}`);
   }
 
+  getNoteImage(note: Note): string {
+    return `${this.apiUrl}/${note._id}/image/${note.image}`;
+  }
+
 }
