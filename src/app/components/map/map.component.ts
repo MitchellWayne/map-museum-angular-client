@@ -23,6 +23,8 @@ export class MapComponent implements OnInit {
   map!: google.maps.Map;
   google!: typeof google;
 
+  zoomed: boolean = false;
+
   loader = new Loader({
     apiKey: "AIzaSyDQzXxQOdyekwryvLgymDv4yG-VwssetB0",
     version: "weekly"
@@ -32,7 +34,7 @@ export class MapComponent implements OnInit {
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
-        if (this.pinsActive) this.reloadNotes();
+        if (this.pinsActive) this.reloadNotes(this.zoomed);
       }
     );
 
@@ -52,7 +54,7 @@ export class MapComponent implements OnInit {
         if (!this.pinsActive) {
           this.clearMarkers();
         } else {
-          this.reloadNotes();
+          this.reloadNotes(this.zoomed);
         }
       }
     );
@@ -73,13 +75,27 @@ export class MapComponent implements OnInit {
       });
 
       this.uiService.getNoteListDetailed('');
+
+      this.map.addListener('zoom_changed', () => {
+        if (this.map.getZoom() as number >= 10) {
+          if (this.zoomed === false){
+            this.zoomed = true;
+            this.reloadNotes(this.zoomed);
+          }
+        } else {
+          if (this.zoomed === true){
+            this.zoomed = false;
+            this.reloadNotes(this.zoomed);
+          }
+        }
+      });
     })
     .catch(err => {
       console.log(err);
     })
   }
 
-  reloadNotes() {
+  reloadNotes(zoomed: boolean) {
     this.clearMarkers();
     this.activeNotes.forEach((note: Note, index) => {
       const img = {
@@ -114,10 +130,12 @@ export class MapComponent implements OnInit {
        infowindow.setContent(popuphtml);
 
       marker.addListener('click', () => {
-        // infowindow.open(this.map, marker);
         this.uiService.clearActives();
         this.uiService.setActiveNote(this.activeNotes[index]);
       });
+
+      if (zoomed) infowindow.open(this.map, marker);
+      else infowindow.close();
 
       this.noteMarkers.push(marker);
     });
