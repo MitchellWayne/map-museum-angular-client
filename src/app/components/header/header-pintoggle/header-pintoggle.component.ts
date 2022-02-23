@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-header-pintoggle',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-pintoggle.component.scss']
 })
 export class HeaderPintoggleComponent implements OnInit {
+  toggleValue: boolean = true;
 
-  constructor() { }
+  constructor(private uiService : UiService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleChanged(){
+    this.uiService.setPinsActive(this.toggleValue);
   }
 
 }

@@ -1,1 +1,7 @@
-<p>header-pintoggle works!</p>
+<div class="pintoggleContainer">
+  <label for="pintoggle">Toggle Markers</label>
+  <input type="checkbox" name="pintoggle" id="pintoggle"
+    [(ngModel)]="toggleValue"
+    (ngModelChange)="toggleChanged()"
+  >
+</div>
