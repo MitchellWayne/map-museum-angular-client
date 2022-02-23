@@ -1,0 +1,10 @@
+@use '/src/defaults' as d;
+
+.pintoggleContainer {
+  label {
+    margin: 0 .5em 0 0;
+    font-family: map-get(d.$fonts, "gideon");
+    font-size: 1em;
+    text-shadow: .05em .05em 0em d.$black;
+  }
+}
