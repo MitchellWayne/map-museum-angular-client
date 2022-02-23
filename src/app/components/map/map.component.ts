@@ -42,7 +42,7 @@ export class MapComponent implements OnInit {
       note => {
         if (note) {
           let latlng = note.latlong.split(',')
-          this.map.setCenter({lat: parseInt(latlng[0]), lng: parseInt(latlng[1])});
+          this.map.setCenter({lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])});
           this.map.setZoom(9);
         }
       }
@@ -105,7 +105,7 @@ export class MapComponent implements OnInit {
 
       const latlng = note.latlong.split(',')
       const marker = new this.google.maps.Marker({
-        position: {lat: parseInt(latlng[0]), lng: parseInt(latlng[1])},
+        position: {lat: parseFloat(latlng[0]), lng: parseInt(latlng[1])},
         map: this.map,
         title: note.title,
         icon: img,
@@ -134,7 +134,7 @@ export class MapComponent implements OnInit {
         this.uiService.setActiveNote(this.activeNotes[index]);
       });
 
-      if (zoomed) infowindow.open(this.map, marker);
+      if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
       else infowindow.close();
 
       this.noteMarkers.push(marker);
