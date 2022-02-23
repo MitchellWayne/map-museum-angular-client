@@ -16,7 +16,13 @@
       alt="Detailed image depiction of note with title: {{ note.title }}"
     >
   </div>
-  <div class="notedetailed__loc"></div>
+
+  <div class="notedetailed__loc">
+    <h3>{{ note.location }}</h3>
+    <span>{{ note.latlong }}</span>
+    <p>{{ note.locdetails }}</p>
+  </div>
+
   <div class="notedetailed__info">
     <h3>{{ note.title }}</h3>
     <p>{{ note.synopsis }}</p>
