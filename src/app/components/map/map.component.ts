@@ -15,6 +15,9 @@ export class MapComponent implements OnInit {
   activeNoteSubscription: Subscription;
   noteMarkers: google.maps.Marker[] = [];
 
+  pinsActive: boolean = true;
+  pinsActiveSub: Subscription;
+
   map!: google.maps.Map;
   google!: typeof google;
 
@@ -27,7 +30,7 @@ export class MapComponent implements OnInit {
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
-        this.reloadNotes();
+        if (this.pinsActive) this.reloadNotes();
       }
     );
 
@@ -38,6 +41,12 @@ export class MapComponent implements OnInit {
           this.map.setCenter({lat: parseInt(latlng[0]), lng: parseInt(latlng[1])});
           this.map.setZoom(8);
         }
+      }
+    );
+
+    this.pinsActiveSub = this.uiService.onPinsActiveChange().subscribe(
+      state => {
+        this.pinsActive = state;
       }
     );
   }
