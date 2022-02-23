@@ -53,6 +53,7 @@ export class MapComponent implements OnInit {
         fullscreenControl: false,
         mapTypeControl: false,
         streetViewControl: false,
+        zoomControl: false,
       });
 
       this.uiService.getNoteListDetailed('');
