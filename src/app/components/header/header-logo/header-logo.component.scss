@@ -1,9 +1,14 @@
 @use '/src/defaults' as d;
 
 h1 {
+  padding: 0 .5em;
+
   font-family: map-get(d.$fonts, "gideon");
   font-size: 1.5em;
   text-shadow: .05em .05em 0em d.$black;
+
+  background-color: #00000080;
+  border-radius: .25em;
 
   z-index: 1;
 }
