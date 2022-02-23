@@ -15,6 +15,7 @@ import { SeriesitemComponent } from './components/header/header-infobox/seriesit
 import { SeriesdetailedComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed.component';
 import { SeriesdetailedNoteitemComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed-noteitem/seriesdetailed-noteitem.component';
 import { NotedetailedComponent } from './components/header/header-infobox/notedetailed/notedetailed.component';
+import { HeaderPintoggleComponent } from './components/header/header-pintoggle/header-pintoggle.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotedetailedComponent } from './components/header/header-infobox/notede
     SeriesitemComponent,
     SeriesdetailedComponent,
     SeriesdetailedNoteitemComponent,
-    NotedetailedComponent
+    NotedetailedComponent,
+    HeaderPintoggleComponent
   ],
   imports: [
     BrowserModule,
