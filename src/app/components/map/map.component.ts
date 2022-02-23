@@ -12,6 +12,7 @@ import { UiService } from 'src/app/services/ui.service';
 export class MapComponent implements OnInit {
   activeNotes: Note[] = [];
   noteSubscription: Subscription;
+  activeNoteSubscription: Subscription;
   noteMarkers: google.maps.Marker[] = [];
 
   map!: google.maps.Map;
@@ -27,6 +28,16 @@ export class MapComponent implements OnInit {
       value => {
         this.activeNotes = value;  
         this.reloadNotes();
+      }
+    );
+
+    this.activeNoteSubscription = this.uiService.onUpdateActiveNote().subscribe(
+      note => {
+        if (note) {
+          let latlng = note.latlong.split(',')
+          this.map.setCenter({lat: parseInt(latlng[0]), lng: parseInt(latlng[1])});
+          this.map.setZoom(8);
+        }
       }
     );
   }
