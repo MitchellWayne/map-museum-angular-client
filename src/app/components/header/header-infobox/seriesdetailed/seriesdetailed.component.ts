@@ -39,12 +39,12 @@ export class SeriesdetailedComponent implements OnInit {
       this.seriesImgSrc = this.seriesService.getSeriesMainImage(this.series);
     }
 
-    this.uiService.getNoteList(this.series._id);
+    this.uiService.getNoteListDetailed(this.series._id);
   }
 
   exitActiveSeries() {
     this.uiService.clearActives();
-    this.uiService.getNoteList('');
+    this.uiService.getNoteListDetailed('');
   }
 
 }

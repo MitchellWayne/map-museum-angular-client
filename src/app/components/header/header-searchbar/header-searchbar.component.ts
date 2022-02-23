@@ -31,7 +31,7 @@ export class HeaderSearchbarComponent implements OnInit {
   onClear() {
     this.onInputChange.emit('');
     this.searchQuery = '';
-    this.uiService.getNoteList('');
+    this.uiService.getNoteListDetailed('');
   }
 
   onChange() {

@@ -117,7 +117,7 @@ export class UiService {
     return this.activeSeriesSubject.asObservable();
   }
 
-  setActiveNote(note: any): void {
+  setActiveNote(note: Note): void {
     try {
       this.activeSeries = null;
       this.activeNote = note;
