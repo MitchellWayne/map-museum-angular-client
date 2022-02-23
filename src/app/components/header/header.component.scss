@@ -20,15 +20,16 @@
     // z-index: 1;
 
     app-header-searchbar {
-      margin: 0;
+      margin: 0 0 1vh 0;
       width: 95%;
 
       z-index: 1;
     }
 
     app-header-infobox {
+      // display: none;
       overflow: scroll;
-      margin: 1vh 0 0 0;
+      margin: 0;
       height: 90vh;
       width: 95%;
       z-index: 1;
