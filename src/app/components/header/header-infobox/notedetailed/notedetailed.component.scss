@@ -1,0 +1,88 @@
+@use '/src/defaults' as d;
+
+.goback {
+  position: absolute;
+  margin: .25em;
+
+  color: d.$white;
+  font-size: 1.5em;
+
+  &:hover {
+    // color: d.$white-hover;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
+.notedetailed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+
+  &__pic {
+    aspect-ratio: 8/5;
+    height: 85%;
+    width: 100%;
+
+    background-color: d.$black;
+
+    fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: 4em;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+
+      font-size: .2em;
+    }
+  }
+
+  &__loc {
+
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2.5% 0 0 0;
+    padding: 2.5%;
+    width: 100%;
+
+    background-color: d.$infobox;
+
+    font-family: map-get(d.$fonts, "gideon");
+
+    h3 {
+      width: 90%;
+
+      // color: d.$white;
+      background-color: transparent;
+      border: none;
+
+      overflow: hidden;
+      // white-space: nowrap;
+      text-align: start;
+      text-overflow: ellipsis;
+      font-family: map-get(d.$fonts, "gideon");
+    }
+
+    p {
+      margin-top: .5em;
+      font-size: .75em;
+    }
+  }
+}
