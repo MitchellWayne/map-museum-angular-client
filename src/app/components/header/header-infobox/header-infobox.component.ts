@@ -13,24 +13,10 @@ export class HeaderInfoboxComponent implements OnInit {
   @Input() infoboxActive!: boolean;
   @Input() seriesList: Series[] = [];
 
-  activeSeries!: Series;
-  seriesSubscription!: Subscription;
+  @Input() activeSeries!: Series;
+  @Input() activeNote!: Note;
 
-  activeNote!: Note;
-  noteSubscription!: Subscription;
-
-  constructor(private uiService: UiService) { 
-    this.seriesSubscription = uiService.onUpdateActiveSeries().subscribe( 
-      value => {
-        this.activeSeries = value;
-      }
-    );
-
-    this.noteSubscription = uiService.onUpdateActiveNote().subscribe( 
-      value => {
-        this.activeNote = value;
-      }
-    );
+  constructor() { 
   }
 
   ngOnInit(): void {

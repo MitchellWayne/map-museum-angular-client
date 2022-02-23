@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
 import { Series } from 'src/app/interfaces/Series';
+import { Note } from 'src/app/interfaces/Note';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,11 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = "";
   searchQuerySubscription!: Subscription;
 
-  // infoboxActive: boolean = false;
-  // infoboxActiveSubscription!: Subscription;
+  activeSeries!: Series;
+  actSeriesSubscription!: Subscription;
+
+  activeNote!: Note;
+  actNoteSubscription!: Subscription;
 
   constructor(
     private uiService: UiService,
@@ -46,6 +50,18 @@ export class HeaderComponent implements OnInit {
     this.seriesSubscription = this.uiService.onSeriesListUpdate().subscribe(
       value => {
         this.seriesList = value;
+      }
+    );
+
+    this.actSeriesSubscription = uiService.onUpdateActiveSeries().subscribe( 
+      value => {
+        this.activeSeries = value;
+      }
+    );
+
+    this.actNoteSubscription = uiService.onUpdateActiveNote().subscribe( 
+      value => {
+        this.activeNote = value;
       }
     );
   }
