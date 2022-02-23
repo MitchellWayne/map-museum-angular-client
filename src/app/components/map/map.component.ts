@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { Subscription } from 'rxjs';
 import { Note } from 'src/app/interfaces/Note';
+import { NoteService } from 'src/app/services/note.service';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class MapComponent implements OnInit {
     version: "weekly"
   });
 
-  constructor(private uiService: UiService) {
+  constructor(private uiService: UiService, private noteService: NoteService) {
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
@@ -80,11 +81,17 @@ export class MapComponent implements OnInit {
   reloadNotes() {
     this.clearMarkers();
     this.activeNotes.forEach((note: Note, index) => {
+      // const img = {
+      //   url: this.noteService.getNoteImage(note),
+      //   scaledSize: new google.maps.Size(50, 50)
+      // }
+
       const latlng = note.latlong.split(',')
       const marker = new this.google.maps.Marker({
         position: {lat: parseInt(latlng[0]), lng: parseInt(latlng[1])},
         map: this.map,
         title: note.title,
+        // icon: img,
       });
 
        // Infowindow tests
