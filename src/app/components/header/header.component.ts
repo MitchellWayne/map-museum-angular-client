@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = "";
   searchQuerySubscription!: Subscription;
 
-  infoboxActive: boolean = false;
-  infoboxActiveSubscription!: Subscription;
+  // infoboxActive: boolean = false;
+  // infoboxActiveSubscription!: Subscription;
 
   constructor(
     private uiService: UiService,
@@ -37,11 +37,11 @@ export class HeaderComponent implements OnInit {
       }
     );
 
-    this.infoboxActiveSubscription = this.uiService.onInfoboxActive().subscribe(
-      value => {
-        this.infoboxActive = value;
-      }
-    );
+    // this.infoboxActiveSubscription = this.uiService.onInfoboxActive().subscribe(
+    //   value => {
+    //     this.infoboxActive = value;
+    //   }
+    // );
 
     this.seriesSubscription = this.uiService.onSeriesListUpdate().subscribe(
       value => {
@@ -58,15 +58,16 @@ export class HeaderComponent implements OnInit {
     this.uiService.updateSearchQuery(updatedQuery);
     this.uiService.setSearchActive(this.searchQuery !== "");
     this.uiService.clearActives();
-    if (this.searchQuery === "") this.uiService.setInfoboxActive(false);
+    if (this.searchQuery === "") this.seriesList = [];
   }
 
   executeSearch() {
     if (this.searchQuery !== ""){
-      this.uiService.setInfoboxActive(true);
+      // this.uiService.setInfoboxActive(true);
       this.uiService.getSeriesList();
     } else {
-      this.uiService.setInfoboxActive(false);
+      // this.uiService.setInfoboxActive(false);
+      this.seriesList = [];
     }
       }
 }

@@ -70,6 +70,7 @@ export class MapComponent implements OnInit {
         infowindow.open(this.map, marker);
         this.uiService.clearActives();
         this.uiService.setActiveNote(this.activeNotes[index]);
+        // this.uiService.setInfoboxActive(true);
       });
 
       this.noteMarkers.push(marker);

@@ -1,5 +1,5 @@
-<div *ngIf="infoboxActive"
-  class="infoboxContainer {{ activeSeries || activeNote ? 'infoboxContainer--subjectActive' : null}}">
+<div *ngIf="(seriesList.length > 0 || activeSeries || activeNote)"
+  class="infoboxContainer {{ seriesList.length > 0 || activeSeries || activeNote ? 'infoboxContainer--subjectActive' : null}}">
   <app-serieslist 
     *ngIf="seriesList.length > 0 && !activeSeries && !activeNote"
     [seriesList]="seriesList"
@@ -12,6 +12,7 @@
   </app-seriesdetailed>
   <app-notedetailed
     *ngIf="activeNote && !activeSeries"
+    [note]="activeNote"
   >
   </app-notedetailed>
 </div>

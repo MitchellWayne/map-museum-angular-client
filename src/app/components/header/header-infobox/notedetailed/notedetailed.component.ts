@@ -4,6 +4,7 @@ import { UiService } from 'src/app/services/ui.service';
 
 import { faQuestion, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { NoteService } from 'src/app/services/note.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-notedetailed',
@@ -11,7 +12,9 @@ import { NoteService } from 'src/app/services/note.service';
   styleUrls: ['./notedetailed.component.scss']
 })
 export class NotedetailedComponent implements OnInit {
+
   @Input() note!: Note;
+  // activeNoteSubscription: Subscription;
   noteImgSrc: string = "";
 
   faQuestion = faQuestion;
@@ -26,8 +29,6 @@ export class NotedetailedComponent implements OnInit {
     if (this.note.image) {
       this.noteImgSrc = this.noteService.getNoteImage(this.note);
     }
-
-    console.log(this.note);
   }
 
   exitActiveNote() {

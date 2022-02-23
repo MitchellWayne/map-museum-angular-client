@@ -58,18 +58,18 @@ export class UiService {
     return this.searchQuerySubject.asObservable();
   }
 
-  setInfoboxActive(state: boolean): void {
-    try {
-      this.infoboxActive = state;
-      this.infoboxActiveSubject.next(this.infoboxActive);
-    } catch(err) {
-      this.infoboxActiveSubject.error(err);
-    }
-  }
+  // setInfoboxActive(state: boolean): void {
+  //   try {
+  //     this.infoboxActive = state;
+  //     this.infoboxActiveSubject.next(this.infoboxActive);
+  //   } catch(err) {
+  //     this.infoboxActiveSubject.error(err);
+  //   }
+  // }
 
-  onInfoboxActive(): Observable<any> {
-    return this.infoboxActiveSubject.asObservable();
-  }
+  // onInfoboxActive(): Observable<any> {
+  //   return this.infoboxActiveSubject.asObservable();
+  // }
 
   getSeriesList(): void {
     this.seriesService.getSeriesList(this.searchQuery).subscribe(
