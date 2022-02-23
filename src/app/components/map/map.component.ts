@@ -27,7 +27,6 @@ export class MapComponent implements OnInit {
       value => {
         this.activeNotes = value;  
         this.reloadNotes();
-        console.log(value);
       }
     );
   }
@@ -68,7 +67,7 @@ export class MapComponent implements OnInit {
        infowindow.setContent(popuphtml);
 
       marker.addListener('click', () => {
-        // infowindow.open(this.map, marker);
+        infowindow.open(this.map, marker);
         this.uiService.setActiveNote(this.activeNotes[index]);
         this.uiService.setInfoboxActive(true);
       });

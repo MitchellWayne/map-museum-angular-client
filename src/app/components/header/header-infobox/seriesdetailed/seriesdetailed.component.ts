@@ -31,7 +31,6 @@ export class SeriesdetailedComponent implements OnInit {
     this.notesSubscription = this.uiService.onNoteListUpdate().subscribe(
       (value) => {
         this.notes = value;
-        console.log(value);
       });
   }
 
