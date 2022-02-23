@@ -131,7 +131,7 @@ export class MapComponent implements OnInit {
 
       marker.addListener('click', () => {
         this.uiService.clearActives();
-        this.uiService.setActiveNote(this.activeNotes[index]);
+        setTimeout(() => { this.uiService.setActiveNote(this.activeNotes[index]); }, 50);
       });
 
       if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
