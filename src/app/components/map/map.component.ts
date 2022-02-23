@@ -10,6 +10,7 @@ import { UiService } from 'src/app/services/ui.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+
 export class MapComponent implements OnInit {
   activeNotes: Note[] = [];
   noteSubscription: Subscription;
@@ -40,7 +41,7 @@ export class MapComponent implements OnInit {
         if (note) {
           let latlng = note.latlong.split(',')
           this.map.setCenter({lat: parseInt(latlng[0]), lng: parseInt(latlng[1])});
-          this.map.setZoom(8);
+          this.map.setZoom(9);
         }
       }
     );
@@ -81,29 +82,41 @@ export class MapComponent implements OnInit {
   reloadNotes() {
     this.clearMarkers();
     this.activeNotes.forEach((note: Note, index) => {
-      // const img = {
-      //   url: this.noteService.getNoteImage(note),
-      //   scaledSize: new google.maps.Size(50, 50)
-      // }
+      const img = {
+        url: 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
+        scaledSize: new google.maps.Size(25, 25),
+      }
 
       const latlng = note.latlong.split(',')
       const marker = new this.google.maps.Marker({
         position: {lat: parseInt(latlng[0]), lng: parseInt(latlng[1])},
         map: this.map,
         title: note.title,
-        // icon: img,
+        icon: img,
+        animation: google.maps.Animation.DROP,
       });
 
-       // Infowindow tests
+       // Infowindow setup for map listener
+       let noteImgUrl = this.noteService.getNoteImage(note);
        let infowindow = new google.maps.InfoWindow();
-       let popuphtml = `<div>${note.title} <div>${note.location}</div></div>`;
+       let popuphtml = 
+       `<div _ngcontent-gbs-c55="" class="notedetailed__pic" style="
+        width: 100px;
+        height: 100px;
+        ">
+          <img src=${noteImgUrl}
+          style="
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          ">
+        </div>`;
        infowindow.setContent(popuphtml);
 
       marker.addListener('click', () => {
-        infowindow.open(this.map, marker);
+        // infowindow.open(this.map, marker);
         this.uiService.clearActives();
         this.uiService.setActiveNote(this.activeNotes[index]);
-        // this.uiService.setInfoboxActive(true);
       });
 
       this.noteMarkers.push(marker);
