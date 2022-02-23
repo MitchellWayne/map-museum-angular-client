@@ -47,6 +47,11 @@ export class MapComponent implements OnInit {
     this.pinsActiveSub = this.uiService.onPinsActiveChange().subscribe(
       state => {
         this.pinsActive = state;
+        if (!this.pinsActive) {
+          this.clearMarkers();
+        } else {
+          this.reloadNotes();
+        }
       }
     );
   }
