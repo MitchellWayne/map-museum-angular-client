@@ -27,6 +27,9 @@ export class UiService {
   private activeNote: any = null;
   private activeNoteSubject = new Subject<any>();
 
+  private pinsActive: boolean = true;
+  private pinsActiveSubject = new Subject<any>();
+
   constructor(private seriesService: SeriesService, private noteService: NoteService) {}
 
   setSearchActive(state: boolean): void {
@@ -120,5 +123,18 @@ export class UiService {
     this.activeNoteSubject.next(this.activeNote);
     this.activeSeries = null;
     this.activeSeriesSubject.next(this.activeSeries);
+  }
+
+  setPinsActive(state: boolean): void {
+    try {
+      this.pinsActive = state;
+      this.pinsActiveSubject.next(this.pinsActive);
+    } catch(err) {
+      this.pinsActiveSubject.error(err);
+    }
+  }
+
+  onPinsActiveChange(): Observable<boolean> {
+    return this.pinsActiveSubject.asObservable();
   }
 }
