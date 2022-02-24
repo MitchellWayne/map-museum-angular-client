@@ -105,7 +105,7 @@ export class MapComponent implements OnInit {
 
       const latlng = note.latlong.split(',')
       const marker = new this.google.maps.Marker({
-        position: {lat: parseFloat(latlng[0]), lng: parseInt(latlng[1])},
+        position: {lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])},
         map: this.map,
         title: note.title,
         icon: img,
