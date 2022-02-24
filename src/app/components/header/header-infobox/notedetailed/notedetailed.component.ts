@@ -16,6 +16,7 @@ export class NotedetailedComponent implements OnInit {
   @Input() note!: Note;
   // activeNoteSubscription: Subscription;
   noteImgSrc: string = "";
+  noteSeriesImgSrc: string = "";
 
   faQuestion = faQuestion;
   faArrowLeft = faArrowLeft;
@@ -28,6 +29,10 @@ export class NotedetailedComponent implements OnInit {
   ngOnInit(): void {
     if (this.note.image) {
       this.noteImgSrc = this.noteService.getNoteImage(this.note);
+    }
+
+    if (this.note.seriesimage) {
+      this.noteSeriesImgSrc = this.noteService.getNoteSeriesImage(this.note);
     }
   }
 

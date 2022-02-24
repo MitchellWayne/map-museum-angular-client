@@ -7,4 +7,5 @@ export interface Note {
   locdetails: string;
   latlong: string;
   image: string;
+  seriesimage: string;
 }
