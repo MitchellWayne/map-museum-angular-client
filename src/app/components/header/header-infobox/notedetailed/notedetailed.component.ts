@@ -39,4 +39,12 @@ export class NotedetailedComponent implements OnInit {
   exitActiveNote() {
     this.uiService.clearActives();
   }
+
+  swapActiveImage() {
+    if (this.noteImgSrc && this.noteSeriesImgSrc) {
+      const tempsrc = this.noteImgSrc;
+      this.noteImgSrc = this.noteSeriesImgSrc;
+      this.noteSeriesImgSrc = tempsrc;
+    }
+  }
 }

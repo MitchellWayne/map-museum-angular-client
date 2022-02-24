@@ -20,6 +20,7 @@
       </div>
       <img
         class="seriesimg"
+        (click)="swapActiveImage()"
         *ngIf="noteSeriesImgSrc !== ''"
         src="{{ noteSeriesImgSrc }}"
         alt="Detailed series image depiction of note with title: {{ note.title }}">
