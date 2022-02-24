@@ -55,6 +55,7 @@
     }
 
     .seriesimg {
+      display: none;
       margin: 0;
       // padding: .25em;
       align-self: flex-end;
@@ -64,6 +65,12 @@
       width: 10%;
 
       box-shadow: -0.05em 0.05em 0.1em d.$black;
+    }
+
+    &:hover {
+      .seriesimg {
+        display: block;
+      }
     }
   }
 
