@@ -17,14 +17,13 @@
     >
   </div>
 
-  <div class="notedetailed__loc">
-    <h3>{{ note.location }}</h3>
-    <span>{{ note.latlong }}</span>
-    <p>{{ note.locdetails }}</p>
+  <div class="notedetailed__loc" *ngIf="note.location || note.locdetails">
+    <h3 *ngIf="note.location">{{ note.location }}</h3>
+    <p *ngIf="note.locdetails">{{ note.locdetails }}</p>
   </div>
 
-  <div class="notedetailed__info">
-    <h3>{{ note.title }}</h3>
-    <p>{{ note.synopsis }}</p>
+  <div class="notedetailed__info" *ngIf="note.title || note.synopsis">
+    <h3 *ngIf="note.title">{{ note.title }}</h3>
+    <p *ngIf="note.synopsis">{{ note.synopsis }}</p>
   </div>
 </div>
