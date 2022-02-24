@@ -64,7 +64,12 @@
       aspect-ratio: 8/5;
       width: 10%;
 
+      opacity: 50%;
       box-shadow: -0.05em 0.05em 0.1em d.$black;
+
+      &:hover {
+        opacity: 100%;
+      }
     }
 
     &:hover {
