@@ -24,28 +24,46 @@
   height: 100%;
 
   &__pic {
+    display: flex;
+    flex-direction: column;
     aspect-ratio: 8/5;
     width: 100%;
 
     background-color: d.$black;
 
-    fa-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
+    .mainImgContainer {
       height: 100%;
 
-      font-size: 4em;
+      fa-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        width: 100%;
+        height: 100%;
+  
+        font-size: 4em;
+      }
+
+      .img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+  
+        font-size: .2em;
+      }
     }
 
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
+    .seriesimg {
+      margin: 0;
+      // padding: .25em;
+      align-self: flex-end;
+      position: absolute;
 
-      font-size: .2em;
+      aspect-ratio: 8/5;
+      width: 10%;
+
+      box-shadow: -0.05em 0.05em 0.1em d.$black;
     }
   }
 

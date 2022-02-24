@@ -6,15 +6,23 @@
 </fa-icon>
 <div class="notedetailed">
   <div class="notedetailed__pic">
-    <fa-icon
-      *ngIf="noteImgSrc === ''"
-      [icon]="faQuestion">
-    </fa-icon>
-    <img 
-      *ngIf="noteImgSrc !== ''"
-      src="{{ noteImgSrc }}"
-      alt="Detailed image depiction of note with title: {{ note.title }}"
-    >
+      <div class="mainImgContainer">
+        <fa-icon
+          *ngIf="noteImgSrc === ''"
+          [icon]="faQuestion">
+        </fa-icon>
+        <img
+          class="img"
+          *ngIf="noteImgSrc !== ''"
+          src="{{ noteImgSrc }}"
+          alt="Detailed real life image depiction of note with title: {{ note.title }}"
+        >
+      </div>
+      <img
+        class="seriesimg"
+        *ngIf="noteSeriesImgSrc !== ''"
+        src="{{ noteSeriesImgSrc }}"
+        alt="Detailed series image depiction of note with title: {{ note.title }}">
   </div>
 
   <div class="notedetailed__loc" *ngIf="note.location || note.locdetails">
