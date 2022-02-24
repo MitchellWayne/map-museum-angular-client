@@ -30,4 +30,8 @@ export class NoteService {
     return `${this.apiUrl}/${note._id}/image/${note.image}`;
   }
 
+  getNoteSeriesImage(note: Note): string {
+    return `${this.apiUrl}/${note._id}/image/${note.seriesimage}`;
+  }
+
 }
