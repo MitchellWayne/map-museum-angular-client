@@ -47,4 +47,17 @@ export class SeriesdetailedComponent implements OnInit {
     this.uiService.getNoteListDetailed('');
   }
 
+  sortNotes(notes: Note[]): Array<Note[]> {
+    let notable: Note[] = [];
+    let scenic: Note[] = [];
+    notes.forEach(
+      note => {
+        if ( !(note.location && note.locdetails && note.synopsis) ) scenic.push(note);
+        else notable.push(note);
+      }
+    );
+
+    return [notable, scenic];
+  }
+
 }
