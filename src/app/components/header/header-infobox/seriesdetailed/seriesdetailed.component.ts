@@ -19,6 +19,8 @@ export class SeriesdetailedComponent implements OnInit {
   seriesImgSrc: string = "";
 
   notes: Note[] = [];
+  notable: Note[] = [];
+  scenic: Note[] = [];
   notesSubscription!: Subscription;
 
   faQuestion = faQuestion;
@@ -31,6 +33,9 @@ export class SeriesdetailedComponent implements OnInit {
     this.notesSubscription = this.uiService.onNoteListUpdate().subscribe(
       (value) => {
         this.notes = value;
+        let sortRes = this.sortNotes(this.notes);
+        this.notable = sortRes[0];
+        this.scenic = sortRes[1];
       });
   }
 
