@@ -105,7 +105,7 @@ export class MapComponent implements OnInit {
       // });
 
       this.map.addListener('dblclick', () => {
-
+        console.log(this.map.getCenter()?.toString());
       });
     })
     .catch(err => {
