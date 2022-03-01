@@ -90,19 +90,19 @@ export class MapComponent implements OnInit {
         }
       });
 
-      this.map.addListener('bounds_changed', () => {
-        if (this.map.getZoom() as number >= 10) {
-          if (this.zoomed === false){
-            this.zoomed = true;
-            this.reloadNotes(this.zoomed);
-          }
-        } else {
-          if (this.zoomed === true){
-            this.zoomed = false;
-            this.reloadNotes(this.zoomed);
-          }
-        }
-      });
+      // this.map.addListener('bounds_changed', () => {
+      //   if (this.map.getZoom() as number >= 10) {
+      //     if (this.zoomed === false){
+      //       this.zoomed = true;
+      //       this.reloadNotes(this.zoomed);
+      //     }
+      //   } else {
+      //     if (this.zoomed === true){
+      //       this.zoomed = false;
+      //       this.reloadNotes(this.zoomed);
+      //     }
+      //   }
+      // });
 
       this.map.addListener('dblclick', () => {
 
