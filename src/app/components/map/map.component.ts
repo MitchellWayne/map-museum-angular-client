@@ -89,6 +89,14 @@ export class MapComponent implements OnInit {
           }
         }
       });
+
+      this.map.addListener('bounds_changed', () => {
+
+      });
+
+      this.map.addListener('dblclick', () => {
+
+      });
     })
     .catch(err => {
       console.log(err);
