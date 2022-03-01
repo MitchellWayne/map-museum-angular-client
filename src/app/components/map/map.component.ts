@@ -72,6 +72,7 @@ export class MapComponent implements OnInit {
         mapTypeControl: false,
         streetViewControl: false,
         zoomControl: false,
+        disableDoubleClickZoom: true,
       });
 
       this.uiService.getNoteListDetailed('');
