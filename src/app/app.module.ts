@@ -16,6 +16,7 @@ import { SeriesdetailedComponent } from './components/header/header-infobox/seri
 import { SeriesdetailedNoteitemComponent } from './components/header/header-infobox/seriesdetailed/seriesdetailed-noteitem/seriesdetailed-noteitem.component';
 import { NotedetailedComponent } from './components/header/header-infobox/notedetailed/notedetailed.component';
 import { HeaderPintoggleComponent } from './components/header/header-pintoggle/header-pintoggle.component';
+import { CoordinateboxComponent } from './components/header/coordinatebox/coordinatebox.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeaderPintoggleComponent } from './components/header/header-pintoggle/h
     SeriesdetailedComponent,
     SeriesdetailedNoteitemComponent,
     NotedetailedComponent,
-    HeaderPintoggleComponent
+    HeaderPintoggleComponent,
+    CoordinateboxComponent
   ],
   imports: [
     BrowserModule,
