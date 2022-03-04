@@ -1,15 +1,25 @@
 @use '/src/defaults' as d;
 
 .goback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00000040;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 100%;
+
   position: absolute;
   margin: .25em;
 
   color: d.$white;
   font-size: 1.5em;
-
+  
   &:hover {
     // color: d.$white-hover;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    background-color: #00000080;
   }
 
   &:active {
