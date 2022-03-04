@@ -105,8 +105,8 @@ export class MapComponent implements OnInit {
       //   }
       // });
 
-      this.map.addListener('dblclick', () => {
-        const newCoords = this.map.getCenter() ? this.map.getCenter()?.toString() : 'Null';
+      this.map.addListener('dblclick', (mouseEvent: google.maps.MapMouseEvent) => {
+        const newCoords = mouseEvent.latLng?.toString();
         this.uiService.setCoordinates(newCoords!);
       });
     })
