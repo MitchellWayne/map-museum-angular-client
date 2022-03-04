@@ -149,4 +149,8 @@ export class UiService {
       this.coordinatesSubject.error(err);
     }
   }
+
+  onCoordinatesChange(): Observable<string> {
+    return this.coordinatesSubject.asObservable();
+  }
 }
