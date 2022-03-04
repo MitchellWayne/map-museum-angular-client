@@ -1,0 +1,18 @@
+@use '/src/defaults' as d;
+
+.coordinateboxContainer {
+  padding: 0 .5em;
+  margin: 0 0 .25em 0;
+  width: fit-content;
+  align-self: flex-end;
+
+  background-color: #00000080;
+  border-radius: .25em;
+  
+  .coordinates {
+    margin: 0 .5em 0 0;
+    font-family: map-get(d.$fonts, "gideon");
+    font-size: 1em;
+    text-shadow: .05em .05em 0em d.$black;
+  }
+}

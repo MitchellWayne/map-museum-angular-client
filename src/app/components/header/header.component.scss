@@ -49,7 +49,10 @@
       height: fit-content;
     }
 
-    app-header-pintoggle {
+    span { z-index: 1; }
+
+
+    app-header-pintoggle, app-coordinatebox {
       z-index: 1;
       height: fit-content;
       margin: 0 0 .5em 0;
