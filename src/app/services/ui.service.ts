@@ -30,6 +30,9 @@ export class UiService {
   private pinsActive: boolean = true;
   private pinsActiveSubject = new Subject<any>();
 
+  private coordinates: string = '';
+  private coordinatesSubject = new Subject<any>();
+
   constructor(private seriesService: SeriesService, private noteService: NoteService) {}
 
   setSearchActive(state: boolean): void {
@@ -136,5 +139,14 @@ export class UiService {
 
   onPinsActiveChange(): Observable<boolean> {
     return this.pinsActiveSubject.asObservable();
+  }
+
+  setCoordinates(coords: string): void {
+    try {
+      this.coordinates = coords;
+      this.coordinatesSubject.next(this.coordinates);
+    } catch(err) {
+      this.coordinatesSubject.error(err);
+    }
   }
 }
