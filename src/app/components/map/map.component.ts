@@ -106,7 +106,8 @@ export class MapComponent implements OnInit {
       // });
 
       this.map.addListener('dblclick', () => {
-        console.log(this.map.getCenter()?.toString());
+        const newCoords = this.map.getCenter() ? this.map.getCenter()?.toString() : 'Null';
+        this.uiService.setCoordinates(newCoords!);
       });
     })
     .catch(err => {
