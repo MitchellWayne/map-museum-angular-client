@@ -1,3 +1,4 @@
-<div class="coordinateboxContainer">
-  <div *ngIf="coords !== ''" class="coordinates">Loc: {{ coords }}</div>
+<div *ngIf=" lat !== '' && lng !== '' " class="coordinateboxContainer">
+  <div class="coordinates">Lat: {{ lat }}</div>
+  <div class="coordinates">Lng: {{ lng }}</div>
 </div>

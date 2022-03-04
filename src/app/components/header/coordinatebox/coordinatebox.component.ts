@@ -8,13 +8,16 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./coordinatebox.component.scss']
 })
 export class CoordinateboxComponent implements OnInit {
-  coords: string = '';
+  lat: string = '';
+  lng: string = '';
   coordsSubscription: Subscription;
 
   constructor(private uiService: UiService) {
     this.coordsSubscription = this.uiService.onCoordinatesChange().subscribe(
       coords => {
-        this.coords = coords;
+        let splitcoords = coords.replace(/[\(\)]/g,'').split(',');
+        this.lat = splitcoords[0];
+        this.lng = splitcoords[1];
       }
     )
   }
