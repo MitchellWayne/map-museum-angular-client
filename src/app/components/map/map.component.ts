@@ -91,20 +91,6 @@ export class MapComponent implements OnInit {
         }
       });
 
-      // this.map.addListener('bounds_changed', () => {
-      //   if (this.map.getZoom() as number >= 10) {
-      //     if (this.zoomed === false){
-      //       this.zoomed = true;
-      //       this.reloadNotes(this.zoomed);
-      //     }
-      //   } else {
-      //     if (this.zoomed === true){
-      //       this.zoomed = false;
-      //       this.reloadNotes(this.zoomed);
-      //     }
-      //   }
-      // });
-
       this.map.addListener('dblclick', (mouseEvent: google.maps.MapMouseEvent) => {
         const newCoords = mouseEvent.latLng?.toString();
         this.uiService.setCoordinates(newCoords!);
@@ -148,13 +134,17 @@ export class MapComponent implements OnInit {
           ">
         </div>`;
        infowindow.setContent(popuphtml);
+       infowindow.setOptions({
+         disableAutoPan: true,
+       })
 
       marker.addListener('click', () => {
         this.uiService.clearActives();
         setTimeout(() => { this.uiService.setActiveNote(this.activeNotes[index]); }, 50);
       });
 
-      if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
+      // if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
+      if (zoomed) infowindow.open(this.map, marker);
       else infowindow.close();
 
       this.noteMarkers.push(marker);
