@@ -143,8 +143,8 @@ export class MapComponent implements OnInit {
         setTimeout(() => { this.uiService.setActiveNote(this.activeNotes[index]); }, 50);
       });
 
-      // if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
-      if (zoomed) infowindow.open(this.map, marker);
+      if (zoomed && this.map.getBounds()?.contains(marker.getPosition() as google.maps.LatLng)) infowindow.open(this.map, marker);
+      // if (zoomed) infowindow.open(this.map, marker);
       else infowindow.close();
 
       this.noteMarkers.push(marker);
