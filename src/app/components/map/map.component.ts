@@ -4,8 +4,7 @@ import { Subscription } from 'rxjs';
 import { Note } from 'src/app/interfaces/Note';
 import { NoteService } from 'src/app/services/note.service';
 import { UiService } from 'src/app/services/ui.service';
-
-require('dotenv').config()
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -28,7 +27,7 @@ export class MapComponent implements OnInit {
   zoomed: boolean = false;
 
   loader = new Loader({
-    apiKey: process.env['MAPS_APIKEY'] as string,
+    apiKey: environment.MAPS_APIKEY,
     version: "weekly"
   });
 
