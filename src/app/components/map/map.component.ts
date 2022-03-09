@@ -5,6 +5,8 @@ import { Note } from 'src/app/interfaces/Note';
 import { NoteService } from 'src/app/services/note.service';
 import { UiService } from 'src/app/services/ui.service';
 
+require('dotenv').config()
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -26,7 +28,7 @@ export class MapComponent implements OnInit {
   zoomed: boolean = false;
 
   loader = new Loader({
-    apiKey: "",
+    apiKey: process.env['MAPS_APIKEY'] as string,
     version: "weekly"
   });
 
