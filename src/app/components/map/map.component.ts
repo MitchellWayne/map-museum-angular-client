@@ -26,7 +26,7 @@ export class MapComponent implements OnInit {
   zoomed: boolean = false;
 
   loader = new Loader({
-    apiKey: "AIzaSyDQzXxQOdyekwryvLgymDv4yG-VwssetB0",
+    apiKey: "",
     version: "weekly"
   });
 
