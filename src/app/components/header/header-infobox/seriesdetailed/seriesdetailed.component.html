@@ -29,7 +29,7 @@
       >
       </app-seriesdetailed-noteitem>
     </ul> -->
-    <p>Notable</p>
+    <p *ngIf="notable.length > 0">Notable</p>
     <ul>
       <app-seriesdetailed-noteitem
         *ngFor="let note of notable"
@@ -37,7 +37,7 @@
       >
       </app-seriesdetailed-noteitem>
     </ul>
-    <p>Scenic</p>
+    <p *ngIf="scenic.length > 0">Scenic</p>
     <ul>
       <app-seriesdetailed-noteitem
         *ngFor="let note of scenic"
