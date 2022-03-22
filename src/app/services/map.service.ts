@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MapKey } from '../interfaces/MapKey';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -12,11 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class MapService {
-  private apiUrl = 'http://localhost:5000/series'; // to be changed to work w/ heroku
+  private apiUrl = 'http://localhost:5000'; // to be changed to work w/ heroku
 
   constructor(private http: HttpClient) { }
 
-  getMapKey(): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/admin/mapsAPI`);
+  getMapKey(): Observable<MapKey> {
+    return this.http.get<MapKey>(`${this.apiUrl}/admin/mapsAPI`);
   }
 }

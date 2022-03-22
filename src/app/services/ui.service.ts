@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { SeriesService } from './series.service';
 import { NoteService } from './note.service';
+import { MapService } from './map.service';
 import { Series } from '../interfaces/Series';
 import { Note } from '../interfaces/Note';
 
@@ -27,13 +28,16 @@ export class UiService {
   private activeNote: any = null;
   private activeNoteSubject = new Subject<any>();
 
+  private mapsApiKey: string = '';
+  private mapsApiKeySubject = new Subject<any>();
+
   private pinsActive: boolean = true;
   private pinsActiveSubject = new Subject<any>();
 
   private coordinates: string = '';
   private coordinatesSubject = new Subject<any>();
 
-  constructor(private seriesService: SeriesService, private noteService: NoteService) {}
+  constructor(private seriesService: SeriesService, private noteService: NoteService, private mapService: MapService) {}
 
   setSearchActive(state: boolean): void {
     try {
@@ -126,6 +130,18 @@ export class UiService {
     this.activeNoteSubject.next(this.activeNote);
     this.activeSeries = null;
     this.activeSeriesSubject.next(this.activeSeries);
+  }
+
+  getApiKey(): void {
+    this.mapService.getMapKey().subscribe(
+      (value) =>  {
+        this.mapsApiKey = value.apikey;
+        this.mapsApiKeySubject.next(this.mapsApiKey);
+      });
+  }
+
+  onApiKeyUpdate(): Observable<string> {
+    return this.mapsApiKeySubject.asObservable();
   }
 
   setPinsActive(state: boolean): void {
