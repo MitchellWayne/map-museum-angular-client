@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Note } from 'src/app/interfaces/Note';
 import { NoteService } from 'src/app/services/note.service';
 import { UiService } from 'src/app/services/ui.service';
-import { environment } from 'src/environments/environment';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-map',
@@ -21,17 +21,16 @@ export class MapComponent implements OnInit {
   pinsActive: boolean = true;
   pinsActiveSub: Subscription;
 
+  key: string = '';
+  keySubscription: Subscription;
+
   map!: google.maps.Map;
   google!: typeof google;
 
   zoomed: boolean = false;
 
-  loader = new Loader({
-    apiKey: environment.MAPS_APIKEY,
-    version: "weekly"
-  });
-
-  constructor(private uiService: UiService, private noteService: NoteService) {
+  constructor(private uiService: UiService, private noteService: NoteService, private mapService: MapService) {
+    
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
@@ -59,11 +58,29 @@ export class MapComponent implements OnInit {
         }
       }
     );
+
+    this.keySubscription = this.uiService.onApiKeyUpdate().subscribe(
+      value => {
+        this.key = value;
+        this.loadMap();
+      }
+    )
   }
 
   ngOnInit(): void {
+    this.uiService.getApiKey();
+  }
+
+  loadMap() {
+    console.log(this.key);
+
+    let loader = new Loader({
+      apiKey: this.key,
+      version: "weekly"
+    });
+
     // Load map at default coordinates
-    this.loader.load()
+    loader.load()
     .then((google) => {
       this.google = google;
       this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
