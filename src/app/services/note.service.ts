@@ -7,7 +7,7 @@ import { Note } from '../interfaces/Note';
   providedIn: 'root'
 })
 export class NoteService {
-  private apiUrl = 'http://localhost:5000/note';
+  private apiUrl = 'https://media-map-mw.herokuapp.com/note';
 
   constructor(private http: HttpClient) { }
 

@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SeriesService {
-  private apiUrl = 'http://localhost:5000/series';
+  private apiUrl = 'https://media-map-mw.herokuapp.com/series';
 
   constructor(private http: HttpClient) { }
 

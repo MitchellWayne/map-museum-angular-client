@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class MapService {
-  private apiUrl = 'http://localhost:5000'; // to be changed to work w/ heroku
+  private apiUrl = 'https://media-map-mw.herokuapp.com'; // to be changed to work w/ heroku
 
   constructor(private http: HttpClient) { }
 
