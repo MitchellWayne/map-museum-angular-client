@@ -23,6 +23,8 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@angular/cli": "~13.2.2",
+    "@angular/compiler-cli": "~13.2.0",
     "@fortawesome/angular-fontawesome": "^0.10.1",
     "@fortawesome/fontawesome-svg-core": "~1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -35,8 +37,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.2",
-    "@angular/cli": "~13.2.2",
-    "@angular/compiler-cli": "~13.2.0",
     "@types/google.maps": "^3.47.4",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
