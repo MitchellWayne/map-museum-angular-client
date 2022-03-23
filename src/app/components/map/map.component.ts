@@ -72,8 +72,6 @@ export class MapComponent implements OnInit {
   }
 
   loadMap() {
-    console.log(this.key);
-
     let loader = new Loader({
       apiKey: this.key,
       version: "weekly"
