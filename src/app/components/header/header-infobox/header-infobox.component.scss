@@ -6,6 +6,8 @@
 
   background-color: d.$infobox;
   box-shadow: .15em 0 0 d.$black;
+
+  overflow: auto;
   
   &--subjectActive {
     // height: 100%;
