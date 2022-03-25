@@ -65,3 +65,10 @@
   }
 }
 
+@media only screen and (min-width: 500px) and (orientation: portrait) {
+  .searchbarContainer {
+    height: 2.5em;
+    font-size: 5vmin;
+  }
+}
+
