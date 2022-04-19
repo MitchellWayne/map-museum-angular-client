@@ -53,6 +53,7 @@ export class SeriesdetailedComponent implements OnInit {
   }
 
   sortNotes(notes: Note[]): Array<Note[]> {
+    this.sortByAlpha();
     let notable: Note[] = [];
     let scenic: Note[] = [];
     notes.forEach(
@@ -63,6 +64,10 @@ export class SeriesdetailedComponent implements OnInit {
     );
 
     return [notable, scenic];
+  }
+
+  sortByAlpha() {
+    this.notes.sort((a, b) => a.title > b.title ? 1 : a.title === b.title ? 0 : -1);
   }
 
 }
