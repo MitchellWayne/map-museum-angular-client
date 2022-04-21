@@ -7,6 +7,7 @@ Built for the purpose of learning Angular as well utilizing the Google Maps Java
 ## Other related repositories
 
 [Express API backend](https://github.com/MitchellWayne/map-museum/tree/main)
+
 [Private React frontend](https://github.com/MitchellWayne/map-museum-react-client)
 
 ## Feature previews
