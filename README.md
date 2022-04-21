@@ -13,6 +13,16 @@ Built for the purpose of learning Angular as well utilizing the Google Maps Java
 ## Feature previews
 
 <details>
-  <summary>Test</summary>
-  <img src="./previews/Test.gif">
+  <summary>Reading a note</summary>
+  <img src="./previews/ReadNote.gif">
+</details>
+
+<details>
+  <summary>Filtering by series</summary>
+  <img src="./previews/Filter.gif">
+</details>
+
+<details>
+  <summary>Note creation (from private react client)</summary>
+  <img src="./previews/NoteCreation.gif">
 </details>
