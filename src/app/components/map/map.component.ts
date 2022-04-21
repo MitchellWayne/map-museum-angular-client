@@ -34,7 +34,9 @@ export class MapComponent implements OnInit {
     this.noteSubscription = this.uiService.onNoteListUpdate().subscribe(
       value => {
         this.activeNotes = value;  
-        if (this.pinsActive) this.reloadNotes(this.zoomed);
+        if (this.pinsActive) {
+          this.reloadNotes(this.zoomed);
+        }
       }
     );
 
@@ -117,8 +119,8 @@ export class MapComponent implements OnInit {
     })
   }
 
-  reloadNotes(zoomed: boolean) {
-    this.clearMarkers();
+  async reloadNotes(zoomed: boolean) {
+    await this.clearMarkers();
     this.activeNotes.forEach((note: Note, index) => {
       const img = {
         url: 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
@@ -167,9 +169,11 @@ export class MapComponent implements OnInit {
     });
   }
 
-  clearMarkers() {
-    this.noteMarkers.forEach(marker => {
+  async clearMarkers() {
+    this.noteMarkers.forEach((marker) => {
+      this.google.maps.event.clearInstanceListeners(marker);
       marker.setMap(null);
     });
+    this.noteMarkers = [];
   }
 }
